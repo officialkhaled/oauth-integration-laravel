@@ -5,20 +5,24 @@ namespace App\Http\Controllers\Auth;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
 use Laravel\Socialite\Facades\Socialite;
 
 class LoginController extends Controller
 {
     protected function _registerOrLoginUser($data)
     {
-        $user = User::query()->where('email', $data->email)->first();
+        $user = User::query()->firstWhere('email', $data->email);
 
         if (!$user) {
             $user = new User();
+
             $user->name = $data->name;
             $user->email = $data->email;
             $user->provider_id = $data->id;
             $user->avatar = $data->avatar;
+//            $user->password = Hash::make('123456');
+
             $user->save();
         }
 
@@ -40,6 +44,7 @@ class LoginController extends Controller
         return redirect()->route('dashboard');
     }
 
+
     //Facebook Login
     public function redirectToFacebook()
     {
@@ -54,6 +59,7 @@ class LoginController extends Controller
         $this->_registerorLoginUser($user);
         return redirect()->route('dashboard');
     }
+
 
     //Github Login
     public function redirectToGithub()
