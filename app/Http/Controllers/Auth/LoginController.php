@@ -9,14 +9,10 @@ use Laravel\Socialite\Facades\Socialite;
 
 class LoginController extends Controller
 {
-    public function index()
-    {
-
-    }
-
     protected function _registerOrLoginUser($data)
     {
         $user = User::query()->where('email', $data->email)->first();
+
         if (!$user) {
             $user = new User();
             $user->name = $data->name;
@@ -25,6 +21,7 @@ class LoginController extends Controller
             $user->avatar = $data->avatar;
             $user->save();
         }
+
         Auth::login($user);
     }
 
@@ -37,11 +34,10 @@ class LoginController extends Controller
     //Google callback
     public function handleGoogleCallback()
     {
-
         $user = Socialite::driver('google')->stateless()->user();
 
         $this->_registerorLoginUser($user);
-        return redirect()->route('home');
+        return redirect()->route('dashboard');
     }
 
     //Facebook Login
@@ -53,11 +49,10 @@ class LoginController extends Controller
     //facebook callback
     public function handleFacebookCallback()
     {
-
         $user = Socialite::driver('facebook')->stateless()->user();
 
         $this->_registerorLoginUser($user);
-        return redirect()->route('home');
+        return redirect()->route('dashboard');
     }
 
     //Github Login
@@ -69,10 +64,9 @@ class LoginController extends Controller
     //github callback
     public function handleGithubCallback()
     {
-
         $user = Socialite::driver('github')->stateless()->user();
 
         $this->_registerorLoginUser($user);
-        return redirect()->route('home');
+        return redirect()->route('dashboard');
     }
 }

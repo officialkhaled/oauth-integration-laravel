@@ -1,14 +1,17 @@
 <x-guest-layout>
     <x-auth-session-status class="mb-4" :status="session('status')"/>
 
-    <div class="mt-1 mb-3 flex justify-evenly gap-8">
-        <a href="{{route('login.google')}}" class="btn btn-sm btn-success w-100">
+    <div class="mt-1 mb-3 flex justify-evenly gap-12">
+        <a href="{{route('login.google')}}"
+           class="py-2 btn btn-sm bg-green-500 text-white hover:bg-green-700 w-100">
             <i class="fa-brands fa-google"></i>
         </a>
-        <a href="{{route('login.facebook')}}" class="btn btn-sm btn-success w-100">
+        <a href="{{route('login.facebook')}}"
+           class="py-2 btn btn-sm bg-blue-500 text-white hover:bg-blue-700 w-100">
             <i class="fa-brands fa-facebook"></i>
         </a>
-        <a href="{{route('login.github')}}" class="btn btn-sm btn-success w-100">
+        <a href="{{route('login.github')}}"
+           class="py-2 btn btn-sm bg-gray-700 text-white hover:bg-gray-900 w-100">
             <i class="fa-brands fa-github"></i>
         </a>
     </div>
