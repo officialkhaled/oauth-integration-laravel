@@ -2,17 +2,17 @@
     <x-auth-session-status class="mb-4" :status="session('status')"/>
 
     <div class="mt-1 mb-3 flex justify-evenly gap-12">
-        <a href="{{route('login.google')}}"
-           class="py-2 btn btn-sm bg-green-500 text-white hover:bg-green-700 w-100">
-            <i class="fa-brands fa-google"></i>
+        <a href="{{route('login.google')}}" data-toggle="tooltip" data-placement="top" title="Google Sign In!"
+           class="py-2 btn btn-sm text-white w-14 shadow-md hover:shadow-lg">
+            <img src="{{ asset('assets/google.png') }}" alt="google">
         </a>
-        <a href="{{route('login.facebook')}}"
-           class="py-2 btn btn-sm bg-blue-500 text-white hover:bg-blue-700 w-100">
-            <i class="fa-brands fa-facebook"></i>
+        <a href="{{route('login.facebook')}}" data-toggle="tooltip" data-placement="top" title="Facebook Sign In!"
+           class="py-2 btn btn-sm text-white w-14 shadow-md hover:shadow-lg">
+            <img src="{{ asset('assets/facebook.png') }}" alt="facebook">
         </a>
-        <a href="{{route('login.github')}}"
-           class="py-2 btn btn-sm bg-gray-700 text-white hover:bg-gray-900 w-100">
-            <i class="fa-brands fa-github"></i>
+        <a href="{{route('login.github')}}" data-toggle="tooltip" data-placement="top" title="GitHub Sign In!"
+           class="py-2 btn btn-sm text-white w-14 shadow-md hover:shadow-lg">
+            <img src="{{ asset('assets/github.png') }}" alt="github">
         </a>
     </div>
 
@@ -38,19 +38,25 @@
             <x-input-error :messages="$errors->get('password')" class="mt-2"/>
         </div>
 
-        <div class="block mt-4">
+        <div class="mt-4 flex justify-between">
             <label for="remember_me" class="inline-flex items-center">
                 <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
                 <span class="ms-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
             </label>
+
+            <div class="">
+                @if (Route::has('password.request'))
+                    <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
+                        {{ __('Forgot your password?') }}
+                    </a>
+                @endif
+            </div>
         </div>
 
         <div class="flex items-center justify-end mt-4">
-            @if (Route::has('password.request'))
-                <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
-                    {{ __('Forgot your password?') }}
-                </a>
-            @endif
+            <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
+                {{ __('Not a member yet? Sign up now.') }}
+            </a>
 
             <x-primary-button class="ms-3">
                 {{ __('Log in') }}
