@@ -1,17 +1,17 @@
 <x-guest-layout>
 
     <div class="mt-1 mb-3 flex justify-evenly gap-12">
-        <a href="{{route('login.google')}}"
-           class="py-2 btn btn-sm bg-green-500 text-white hover:bg-green-700 w-100">
-            <i class="fa-brands fa-google"></i>
+        <a href="{{route('login.google')}}" data-toggle="tooltip" data-placement="top" title="Google Sign In!"
+           class="py-2 btn btn-sm text-white w-14 shadow-md hover:shadow-lg">
+            <img src="{{ asset('assets/google.png') }}" alt="google">
         </a>
-        <a href="{{route('login.facebook')}}"
-           class="py-2 btn btn-sm bg-blue-500 text-white hover:bg-blue-700 w-100">
-            <i class="fa-brands fa-facebook"></i>
+        <a href="{{route('login.facebook')}}" data-toggle="tooltip" data-placement="top" title="Facebook Sign In!"
+           class="py-2 btn btn-sm text-white w-14 shadow-md hover:shadow-lg">
+            <img src="{{ asset('assets/facebook.png') }}" alt="facebook">
         </a>
-        <a href="{{route('login.github')}}"
-           class="py-2 btn btn-sm bg-gray-700 text-white hover:bg-gray-900 w-100">
-            <i class="fa-brands fa-github"></i>
+        <a href="{{route('login.github')}}" data-toggle="tooltip" data-placement="top" title="GitHub Sign In!"
+           class="py-2 btn btn-sm text-white w-14 shadow-md hover:shadow-lg">
+            <img src="{{ asset('assets/github.png') }}" alt="github">
         </a>
     </div>
 
